@@ -1,0 +1,39 @@
+{% extends 'foodapp/base.html'%}
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    {% block content %}
+    <div class="container">
+            <div class="row " style="padding-top: 5px;">
+                {% for food in object_list %}
+                    <div class="col-md-3" style="padding-top: 5px;">
+                        {% if food.image %}
+                            <img src="{{ food.image.url }}" height="120px" width="200px" alt="" style="border: 3px solid rgb(52, 100, 102);">
+
+                        {% endif %}
+    
+                    </div>
+                    <div class="col-md-3">
+                        <h2>{{ food.name }}</h5>
+                        <p>{{ food.description }}</p>
+                        <p style="font-size: large; ">{{ food.time }}</p>
+    
+                    </div>
+                    <div class="col-md-5 offset-md-1" style="padding-top: 40px;">
+                        <a href="{% url 'detail' food.pk %}" class="btn btn-primary">Details</a>
+    
+                    </div>
+                {% endfor %}
+            </div>
+    </div>
+
+    {% endblock %}
+</body>
+</html>

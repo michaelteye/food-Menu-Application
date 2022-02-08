@@ -1,0 +1,29 @@
+{% extends 'foodapp/main_base.html'%}
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    {% block content %}
+    <div class="container">
+        <div class="jumbotron" style="padding-top: 15px;">
+            <div class="row " style="padding-top: 5px; ">
+                <div class="col-md-4 offset-4" style="padding-top: 6px;">
+               <a href="{% url  'signup' %} " class="btn btn-secondary" style="  border: 2px solid rgb(52, 100, 102);">View Full Site</a>
+
+                </div>
+            </div>
+
+        </div>
+        
+
+    </div>
+
+    {% endblock %}
+</body>
+</html>

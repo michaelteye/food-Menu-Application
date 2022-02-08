@@ -1,0 +1,44 @@
+{% extends 'foodapp/base.html'%}
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    {% block content %}
+    <div class="container">
+        <div class="jumbotron" style="padding-top: 15px;">
+            <div class="row " style="padding-top: 5px;">
+                    <div class="col-md-3" style="padding-top: 5px;">
+                        {% if menu.image %}
+                             <img src="{{ menu.image.url }}" height="120px" width="200px" alt="">
+
+                         {% endif %}
+    
+                    </div>
+                    <div class="col-md-3">
+                        <h5>{{ menu.name }}</h5>
+                        <h6>{{ menu.price }}</h6>
+                        <h6 class="text-decoration-line-through" >{{ menu.discount_price }}</h6>
+
+    
+                    </div>
+                    <div class="col-md-5 offset-md-1" style="padding-top: 30px;">
+                        <a href="{% url 'update' menu.pk %}" class="btn btn-primary">Update</a>
+                        <a href="{% url 'delete' menu.pk %}" class="btn btn-danger" type="submit">Delete</a>
+
+                    </div>
+            </div>
+
+        </div>
+        
+
+    </div>
+
+    {% endblock %}
+</body>
+</html>
