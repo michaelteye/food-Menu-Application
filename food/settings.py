@@ -12,7 +12,9 @@ https://docs.djangoproject.com/en/4.0/ref/settings/
 
 from pathlib import Path
 import os
-
+from django.conf import settings
+import django_heroku
+import dj_database_url
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -119,9 +121,7 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/4.0/howto/static-files/
 
 STATIC_URL = '/static/'
-STATIC_ROOT = os.path.join(BASE_DIR/'static')
-MEDIA_URL = '/images/'
-MEDIA_ROOT = os.path.join(BASE_DIR,'static/images')
+
 # STATICFILES_DIRS = (
 #     os.path.join(BASE_DIR, 'static'),
 # )
@@ -130,6 +130,10 @@ MEDIA_ROOT = os.path.join(BASE_DIR,'static/images')
 # https://docs.djangoproject.com/en/4.0/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
-
+STATIC_ROOT = os.path.join(BASE_DIR/'static')
+STATICFILES_DIR = (os.path.join(BASE_DIR, 'static'))
+MEDIA_URL = '/images/'
+MEDIA_ROOT = os.path.join(BASE_DIR,'static/images')
+django_heroku.settings(locals())
 LOGIN_REDIRECT_URL = 'index'
 LOGOUT_REDIRECT_URL = 'index'
